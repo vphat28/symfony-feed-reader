@@ -1,1 +1,1 @@
-# symfony feed reader
+A Feed Reader built on symfony 3

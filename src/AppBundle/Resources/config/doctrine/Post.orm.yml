@@ -1,0 +1,31 @@
+AppBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: '500'
+            nullable: true
+        publicDate:
+            type: date
+            column: public_date
+            nullable: true
+        external:
+            type: boolean
+            column: external
+            nullable: true
+        category:
+            type: integer
+            column: category_id
+            nullable: true
+    lifecycleCallbacks: {  }

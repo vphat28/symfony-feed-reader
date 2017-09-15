@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Feeds</h2>
+    <div>
+        <a class="btn btn-primary" href="/">All Categories</a>
+        {% for category in categories %}
+            <a class="btn btn-primary" href="/?category={{ category.id }}">{{ category.name }}</a>
+        {% endfor %}
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Grabbed from external</th>
+            <th>Public Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+        <tr>
+            <th scope="row">{{ post.id }}</th>
+            <td>{{ post.name }}</td>
+            <td>{{ post.description }}</td>
+            <td>
+                {% if post.external %}
+                    Yes
+                {% endif %}
+            </td>
+            <td>{{ post.publicDate|date('F j, Y')}}</td>
+            <td>
+                <a href="/edit/{{ post.id }}" class="btn btn-primary">Edit</a>
+                <a href="/delete/{{ post.id }}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% for i in range(1, pages) %}
+        <a href="{{ path('feed_list', { 'page': i }) }}">{{ i }}</a>
+    {% endfor %}
+{% endblock %}

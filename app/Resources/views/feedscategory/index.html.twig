@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Feed Category</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+        <tr>
+            <th scope="row">{{ category.id }}</th>
+            <td>{{ category.name }}</td>
+            <td>
+                <a href="/category/edit/{{ category.id }}" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
